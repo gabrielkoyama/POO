@@ -1,6 +1,13 @@
 package br.com.modelo.fatec;
 
 public class Contato {
-	public String nome;
+	protected String nome;
 	
+	public Contato(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
 }

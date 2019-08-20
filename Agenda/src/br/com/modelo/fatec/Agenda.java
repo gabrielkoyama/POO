@@ -1,28 +1,23 @@
 package br.com.modelo.fatec;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.negocio.fatec.Controle;
 
 public class Agenda {
-	public Contato[] contatos = new Contato[5];
+	public List<Contato> contatos = new ArrayList<Contato>();
 	
 	public void listarContato() {
-		for (int i = 0; i < contatos.length; i++) {
-			if(contatos[i] != null) {
-				System.out.println("Nome: " + contatos[i].nome);				
-			}
+		for (Contato contato : contatos) {
+			System.out.println("Nome: " + contato.getNome());
 		}
 	}
 	
 	public void inserirContato() {
 		System.out.println("Por favor, digite um nome para o contato");
-		Contato c = new Contato();
 		Controle ctrl = new Controle();
-		c.nome = ctrl.texto();
-		for (int i = 0; i < contatos.length; i++) {
-			if(contatos[i] == null) {
-				contatos[i] = c;
-				break;
-			}
-		}
+		Contato c = new Contato(ctrl.texto());
+		contatos.add(c);
 	}
 }
