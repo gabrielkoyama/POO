@@ -32,7 +32,7 @@ public class Agenda {
 	}
 	
 	public void remover() throws IOException {
-		File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+		File arq 			= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
 		FileWriter wr 		= new FileWriter(arq, true);
 		FileReader rd 		= new FileReader(arq);
 		BufferedReader brd 	= new BufferedReader(rd);

@@ -5,10 +5,18 @@ public class Contato {
 	protected String telefone;
 	protected String data_nasc;
 	protected String genero;
-	
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public String All() {
+		return (nome + telefone + data_nasc + genero);
+	}
+	
+	@Override
+	public String toString(){
+		return (nome + telefone + data_nasc + genero);
 	}
 
 	public String getTelefone() {
