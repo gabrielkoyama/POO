@@ -1,17 +1,12 @@
 package br.com.modelo.fatec;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import br.com.negocio.fatec.Controle;
 
 public class Agenda {
 	
-	public void inserirContato() throws Exception {
+	public Contato getContato() throws Exception {
 		
 		Controle ctrl 	= new Controle();
 		Contato c 		= new Contato();
@@ -28,32 +23,71 @@ public class Agenda {
 		System.out.println("Sexo: [M/F/O]:");
 		c.setGenero(ctrl.texto());
 		
-		ctrl.salvar(c);	
+		return c;
 	}
 	
-	public void remover() throws IOException {
-		File arq 			= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
-		FileWriter wr 		= new FileWriter(arq, true);
-		FileReader rd 		= new FileReader(arq);
-		BufferedReader brd 	= new BufferedReader(rd);
-		BufferedWriter bwr 	= new BufferedWriter(wr);
-		String texto 		= brd.readLine();
+	public void remover(ArrayList<Contato> contatos) throws IOException {
 		Controle ctrl 		= new Controle();
-		String linha;
+		Contato remove 		= new Contato();
+		boolean found 		= false;
+		String nome;
 		
-		System.out.println("Digite a linha que deseja remover");
-		linha = ctrl.texto();
+		System.out.println("Digite o nome do contato que deseja remover: ");
+		nome = ctrl.texto();
 		
-//		debuggar isso aqui
-		while ((texto = brd.readLine()) != null) {
-	        if (!texto.trim().equals(linha)) {
-//	        	System.out.println(texto);
-	        	continue;
-	        }else {
-	        	bwr.write(texto);	        	
-	        }
-	      }
-		brd.close();
-		bwr.close();
+		for (Contato contato : contatos) {
+			if(contato.getNome().contains(nome)) {
+				found = true;
+				System.out.println("Encontrado! \n");
+				System.out.println(contato.All());
+				System.out.println("Tem certeza que deseja remover " + contato.getNome() + " dos seus contato?[S/N]");
+				String confirm = ctrl.texto();
+				if(confirm.contains("s") || confirm.contains("S")) {
+					System.out.println("Removido com sucesso!");
+					remove = contato;
+				}
+			}
+		}
+		if(!found) System.out.println("Contato nao encontrado");
+		contatos.remove(remove);
+		ctrl.salvarLista(contatos);
+	
 	}
+	
+	public void listar(ArrayList<Contato> contatos) {
+		for (Contato contato : contatos) {
+			System.out.println(contato.All() + "\n");
+		}
+	}
+	
+	public void editar(ArrayList<Contato> contatos) throws Exception {
+		Controle ctrl 		= new Controle();
+		boolean found 		= false;
+		String nome;
+		Agenda agenda = new Agenda();
+		System.out.println("Digite o nome do contato que deseja editar: ");
+		nome = ctrl.texto();
+		for (Contato contato : contatos) {
+			if(contato.getNome().contains(nome)) {
+				found = true;
+				System.out.println("Encontrado! \n");
+				System.out.println(contato.All());
+				System.out.println("Tem certeza que deseja editar " + contato.getNome() + "?[S/N]");
+				String confirm = ctrl.texto();
+				if(confirm.contains("s") || confirm.contains("S")) {
+					contatos.set(contatos.indexOf(contato), agenda.getContato());
+					System.out.println("Editado com sucesso!");
+				}
+			}
+		}
+		if(!found) System.out.println("Contato nao encontrado");
+		
+//		VERIFICACAO
+//		for (Contato contato : contatos) {
+//			System.out.println(contato.All());
+//		}
+		
+		ctrl.salvarLista(contatos);
+	}
+
 }

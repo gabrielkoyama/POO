@@ -11,12 +11,10 @@ public class Contato {
 	}
 	
 	public String All() {
-		return (nome + telefone + data_nasc + genero);
-	}
-	
-	@Override
-	public String toString(){
-		return (nome + telefone + data_nasc + genero);
+		return (	"Nome: " + nome + "\n" + 
+					"Telefone: " + telefone + "\n" +  
+					"Data de Nascimento: " + data_nasc + "\n" +  
+					"Sexo: " + genero );
 	}
 
 	public String getTelefone() {
@@ -46,5 +44,10 @@ public class Contato {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+//	@Override
+//	public String toString(){
+//		return (nome + telefone + data_nasc + genero);
+//	}
 	
 }
