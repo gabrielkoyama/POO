@@ -1,10 +1,12 @@
 package br.com.sistema.fatec;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import br.com.modelo.fatec.Agenda;
@@ -23,6 +25,18 @@ public class App {
 		Controle ctrl 						= new Controle();
 		Controle x;
 		contatos = ctrl.init();
+		ArrayList<String> nomes 			= new ArrayList<String>();
+		
+		Map<String, Contato> contatosMap = new HashMap<String, Contato>(); 
+		contatosMap = ctrl.getContatosMap();
+				
+		for (Entry<String, Contato> entry : contatosMap.entrySet()) {
+//		    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+		    nomes.add(entry.getValue().getNome());
+		}
+		
+		Collections.sort(nomes);
+		System.out.println(nomes);
 		
 
 		int opc = 999;

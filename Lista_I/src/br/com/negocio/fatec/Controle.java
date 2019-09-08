@@ -32,6 +32,41 @@ public class Controle {
 		return t;
 	}
 	
+	public Map getContatosMap() throws IOException {
+		File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+		FileReader rd 		= new FileReader(arq);
+		BufferedReader brd 	= new BufferedReader(rd);
+		String texto 		= brd.readLine();
+		Map<String, Contato> contatos = new HashMap<String, Contato>();
+		String aux;
+		Contato c = new Contato();
+		
+		while(texto != null) {
+			aux = texto.split(":")[0];
+			if(aux.contains("Nome")) {
+				c.setNome(texto.split(": ")[1]);
+			}
+			
+			if(aux.contains("Telefone")) {
+				c.setTelefone(texto.split(": ")[1]);
+			}
+			
+			if(aux.contains("Data")) {
+				c.setData_nasc(texto.split(": ")[1]);
+			}
+			
+			if(aux.contains("Sexo")) {
+				c.setGenero(texto.split(": ")[1]); 
+				contatos.put(c.getNome(), c);
+				c = new Contato();
+			}
+			texto = brd.readLine();
+		}
+		
+		brd.close();
+		return contatos;
+	}
+	
 	public ArrayList init() throws IOException {
 		
 			File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
