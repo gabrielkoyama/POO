@@ -3,15 +3,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import br.com.negocio.fatec.Controle;
-import br.com.negocio.fatec.Menu;
 
 public class Agenda {
 	
-	public Contato getContato() throws Exception {
+	public Pessoa getContato() throws Exception {
 		
-		Menu menu 		= new Menu();
 		Controle ctrl 	= new Controle();
-		Contato c 		= new Contato();
+		Pessoa c 		= new Pessoa();
 		
 		System.out.println("Por favor, digite um nome para o contato");
 		c.setNome(ctrl.texto());
@@ -25,25 +23,19 @@ public class Agenda {
 		System.out.println("Sexo: [M/F/O]:");
 		c.setGenero(ctrl.texto());
 		
-		System.out.println();
-		System.out.println("Agora escolha um dos nossos servicos: \n");
-		menu.servicos();
-
-		c.setServico(c.dictServicos.get(ctrl.texto()));
-		
 		return c;
 	}
 	
-	public void remover(ArrayList<Contato> contatos) throws IOException {
+	public void remover(ArrayList<Pessoa> contatos) throws IOException {
 		Controle ctrl 		= new Controle();
-		Contato remove 		= new Contato();
+		Pessoa remove 		= new Pessoa();
 		boolean found 		= false;
 		String nome;
 		
 		System.out.println("Digite o nome do contato que deseja remover: ");
 		nome = ctrl.texto();
 		
-		for (Contato contato : contatos) {
+		for (Pessoa contato : contatos) {
 			if(contato.getNome().contains(nome)) {
 				found = true;
 				System.out.println("Encontrado! \n");
@@ -62,20 +54,20 @@ public class Agenda {
 	
 	}
 	
-	public void listar(ArrayList<Contato> contatos) {
-		for (Contato contato : contatos) {
+	public void listar(ArrayList<Pessoa> contatos) {
+		for (Pessoa contato : contatos) {
 			System.out.println(contato.All() + "\n");
 		}
 	}
 	
-	public void editar(ArrayList<Contato> contatos) throws Exception {
+	public void editar(ArrayList<Pessoa> contatos) throws Exception {
 		Controle ctrl 		= new Controle();
 		boolean found 		= false;
 		String nome;
 		Agenda agenda = new Agenda();
 		System.out.println("Digite o nome do contato que deseja editar: ");
 		nome = ctrl.texto();
-		for (Contato contato : contatos) {
+		for (Pessoa contato : contatos) {
 			if(contato.getNome().contains(nome)) {
 				found = true;
 				System.out.println("Encontrado! \n");

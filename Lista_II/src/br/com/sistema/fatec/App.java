@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import br.com.modelo.fatec.Agenda;
-import br.com.modelo.fatec.Contato;
+import br.com.modelo.fatec.Pessoa;
 import br.com.negocio.fatec.Controle;
 import br.com.negocio.fatec.Menu;
 
@@ -19,21 +19,27 @@ public class App {
 			
 		Menu menu 							= new Menu();
 		Agenda agenda 						= new Agenda();	
-		ArrayList<Contato> contatos 		= new ArrayList<Contato>();
+		ArrayList<Pessoa> contatos 		= new ArrayList<Pessoa>();
+		ArrayList<Pessoa> contatosM 		= new ArrayList<Pessoa>();
+		ArrayList<Pessoa> contatosF 		= new ArrayList<Pessoa>();
 		Controle ctrl 						= new Controle();
-		Contato ctt 						= new Contato();
 		Controle x;
-	
-
-//		System.out.println(ctt.contServicos);
-//		ctt.contServicos.replace("Pedicure", 1);
-//		System.out.println(ctt.contServicos);
-		
-		
-		
 		contatos = ctrl.init();
-		System.out.println(ctt.teste);
-		int opc = 99;
+		ArrayList<String> nomes 			= new ArrayList<String>();
+		
+		Map<String, Pessoa> contatosMap = new HashMap<String, Pessoa>(); 
+		contatosMap = ctrl.getContatosMap();
+				
+		for (Entry<String, Pessoa> entry : contatosMap.entrySet()) {
+//		    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+		    nomes.add(entry.getValue().getNome());
+		}
+		
+		Collections.sort(nomes);
+		System.out.println(nomes);
+		
+
+		int opc = 999;
 		while(opc != 0) {
 			contatos = ctrl.init();
 			menu.menu();

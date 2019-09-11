@@ -69,36 +69,42 @@ public class Controle {
 	
 	public ArrayList init() throws IOException {
 		
-			File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
-			FileReader rd 		= new FileReader(arq);
-			BufferedReader brd 	= new BufferedReader(rd);
-			String texto 		= brd.readLine();
-			Map<String, Contato> contatosMapinha = new HashMap<String, Contato>();
-			String aux;
-			Contato c = new Contato();
 			ArrayList<Contato> contatos = new ArrayList<Contato>();
+			File arq 					= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+			FileReader rd 				= new FileReader(arq);
+			BufferedReader brd 			= new BufferedReader(rd);
+			String texto 				= brd.readLine();
+			Contato c 					= new Contato();
+			int auxContServico=0;
+			
 			while(texto != null) {
-				aux = texto.split(":")[0];
-				if(aux.contains("Nome")) {
+				if(texto.split(":")[0].contains("Nome")) {
 					c.setNome(texto.split(": ")[1]);
-//					System.out.println("Adicionou: " + c.getNome());
 				}
 				
-				if(aux.contains("Telefone")) {
+				if(texto.split(":")[0].contains("Telefone")) {
 					c.setTelefone(texto.split(": ")[1]);
-//					System.out.println("Adicionou: " + c.getTelefone());
 				}
 				
-				if(aux.contains("Data")) {
+				if(texto.split(":")[0].contains("Data")) {
 					c.setData_nasc(texto.split(": ")[1]);
-//					System.out.println("Adicionou: " + c.getData_nasc());
 				}
 				
-				if(aux.contains("Sexo")) {
-					c.setGenero(texto.split(": ")[1]); 
-//					System.out.println("Adicionou: " + c.getGenero());
-//					System.out.println("Listar tudo " + c.All());
-					contatos.add(c); 
+				if(texto.split(":")[0].contains("Sexo")) {
+					c.setGenero(texto.split(": ")[1]);
+				}
+				
+				if(texto.split(":")[0].contains("Servico")) {
+					c.setServico(texto.split(": ")[1]);
+					auxContServico++;
+					
+
+					
+//					System.out.println(texto.split(": ")[1] + "\n" + auxContServico);
+					c.contServicos.replace(texto.split(": ")[1], auxContServico );
+//					System.out.println(c.contServicos);
+					contatos.add(c);
+					c.teste = "adsadasdasd";
 					c = new Contato();
 				}
 				
@@ -141,6 +147,8 @@ public class Controle {
 		bwr.newLine();
 		bwr.write("Sexo: " + c.getGenero());
 		bwr.newLine();
+		bwr.write("Servico: " + c.getServico());
+		bwr.newLine();
 		bwr.write("======================================");
 		bwr.newLine();
 		bwr.close();
@@ -178,21 +186,3 @@ public class Controle {
 		scanner.close();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

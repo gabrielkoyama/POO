@@ -1,10 +1,44 @@
 package br.com.modelo.fatec;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Contato {
 	protected String nome;
 	protected String telefone;
 	protected String data_nasc;
 	protected String genero;
+	protected String servico;
+	public Map <String, String> dictServicos;
+	public Map <String, Integer> contServicos;
+	public String teste;
+	
+	public Contato() {
+		dictServicos = new HashMap<String, String>();
+		dictServicos.put("1", "Manicure");
+		dictServicos.put("2","Pedicure");
+		dictServicos.put("3","Design de sobrancelhas");
+		dictServicos.put("4","Corte");
+		dictServicos.put("5","Pintura de cabelos");
+		dictServicos.put("6","Remoção de rugas");
+		dictServicos.put("7","Remoção de manchas na pele");
+		dictServicos.put("8","Aplicação de botox");
+		dictServicos.put("9","Tratamento para emagrecimento");
+		dictServicos.put("10","Redução de medidas");
+		
+		contServicos = new HashMap<String, Integer>();
+		contServicos.put("Manicure", 0);
+		contServicos.put("Pedicure", 0);
+		contServicos.put("Design de sobrancelhas", 0);
+		contServicos.put("Corte", 0);
+		contServicos.put("Pintura de cabelos", 0);
+		contServicos.put("Remoção de rugas", 0);
+		contServicos.put("Remoção de manchas na pele", 0);
+		contServicos.put("Aplicação de botox", 0);
+		contServicos.put("Tratamento para emagrecimento", 0);
+		contServicos.put("Redução de medidas", 0);
+		
+	}
 
 	public String getNome() {
 		return nome;
@@ -14,8 +48,10 @@ public class Contato {
 		return (	"Nome: " + nome + "\n" + 
 					"Telefone: " + telefone + "\n" +  
 					"Data de Nascimento: " + data_nasc + "\n" +  
-					"Sexo: " + genero );
+					"Sexo: " + genero + "\n" +
+					"Servico: " + servico );
 	}
+
 
 	public String getTelefone() {
 		return telefone;
@@ -27,6 +63,14 @@ public class Contato {
 
 	public String getData_nasc() {
 		return data_nasc;
+	}
+
+	public String getServico() {
+		return servico;
+	}
+
+	public void setServico(String servico) {
+		this.servico = servico;
 	}
 
 	public void setData_nasc(String data_nasc) {
@@ -44,10 +88,5 @@ public class Contato {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-//	@Override
-//	public String toString(){
-//		return (nome + telefone + data_nasc + genero);
-//	}
 	
 }
