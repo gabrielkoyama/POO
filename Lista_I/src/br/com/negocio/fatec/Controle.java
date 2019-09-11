@@ -75,7 +75,7 @@ public class Controle {
 			BufferedReader brd 			= new BufferedReader(rd);
 			String texto 				= brd.readLine();
 			Contato c 					= new Contato();
-			int auxContServico=0;
+			int aux;
 			
 			while(texto != null) {
 				if(texto.split(":")[0].contains("Nome")) {
@@ -96,15 +96,27 @@ public class Controle {
 				
 				if(texto.split(":")[0].contains("Servico")) {
 					c.setServico(texto.split(": ")[1]);
-					auxContServico++;
 					
+					System.out.println(texto.split(": ")[1]);
+					System.out.println(c.contServicos.get(texto.split(": ")[1]));
 
 					
+//					perguntar pro prof
+					aux = c.getContServicos().get(texto.split(": ")[1]);
+					aux++;					
+					System.out.println(aux);
+					c.contServicos.replace(texto.split(": ")[1], aux);
+					c.setContServicos(c.contServicos);
+					
+					System.out.println(c.contServicos);
+					
+					
+					
+					
 //					System.out.println(texto.split(": ")[1] + "\n" + auxContServico);
-					c.contServicos.replace(texto.split(": ")[1], auxContServico );
+//					c.contServicos.replace(texto.split(": ")[1], auxContServico );
 //					System.out.println(c.contServicos);
 					contatos.add(c);
-					c.teste = "adsadasdasd";
 					c = new Contato();
 				}
 				

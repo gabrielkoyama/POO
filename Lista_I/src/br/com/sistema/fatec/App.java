@@ -24,16 +24,10 @@ public class App {
 		Contato ctt 						= new Contato();
 		Controle x;
 	
-
-//		System.out.println(ctt.contServicos);
-//		ctt.contServicos.replace("Pedicure", 1);
-//		System.out.println(ctt.contServicos);
-		
-		
-		
 		contatos = ctrl.init();
-		System.out.println(ctt.teste);
-		int opc = 99;
+
+		int opc = 0;
+//		int opc = 99;
 		while(opc != 0) {
 			contatos = ctrl.init();
 			menu.menu();

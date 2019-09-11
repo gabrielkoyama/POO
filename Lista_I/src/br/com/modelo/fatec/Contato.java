@@ -11,7 +11,6 @@ public class Contato {
 	protected String servico;
 	public Map <String, String> dictServicos;
 	public Map <String, Integer> contServicos;
-	public String teste;
 	
 	public Contato() {
 		dictServicos = new HashMap<String, String>();
@@ -38,6 +37,14 @@ public class Contato {
 		contServicos.put("Tratamento para emagrecimento", 0);
 		contServicos.put("Redução de medidas", 0);
 		
+	}
+
+	public Map<String, Integer> getContServicos() {
+		return contServicos;
+	}
+
+	public void setContServicos(Map<String, Integer> contServicos) {
+		this.contServicos = contServicos;
 	}
 
 	public String getNome() {
