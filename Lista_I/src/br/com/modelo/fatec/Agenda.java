@@ -63,9 +63,12 @@ public class Agenda {
 	}
 	
 	public void listar(ArrayList<Contato> contatos) {
+		int vazio=0;
 		for (Contato contato : contatos) {
+			vazio++;
 			System.out.println(contato.All() + "\n");
 		}
+		if(vazio == 0) System.out.println("\nNenhum contato na lista\n"); 
 	}
 	
 	public void editar(ArrayList<Contato> contatos) throws Exception {

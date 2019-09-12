@@ -17,9 +17,74 @@ import br.com.modelo.fatec.Contato;
 
 public class Controle {
 	public Scanner scanner;
+//	coloquei aqui porq eu dava new contato ele resetava a lista
+	public Map <String, Integer> contServicos;
+	public Map <String, Integer> contServicosM;
+	public Map <String, Integer> contServicosF;
+
+	public Map<String, Integer> getContServicosM() {
+		return contServicosM;
+	}
+
+	public void setContServicosM(Map<String, Integer> contServicosM) {
+		this.contServicosM = contServicosM;
+	}
+
+	public Map<String, Integer> getContServicosF() {
+		return contServicosF;
+	}
+
+	public void setContServicosF(Map<String, Integer> contServicosF) {
+		this.contServicosF = contServicosF;
+	}
 
 	public Controle() {
 		scanner = new Scanner(System.in);
+		contServicos = new HashMap<String, Integer>();
+		contServicos.put("Manicure", 0);
+		contServicos.put("Pedicure", 0);
+		contServicos.put("Design de sobrancelhas", 0);
+		contServicos.put("Corte", 0);
+		contServicos.put("Pintura de cabelos", 0);
+		contServicos.put("Remoção de rugas", 0);
+		contServicos.put("Remoção de manchas na pele", 0);
+		contServicos.put("Aplicação de botox", 0);
+		contServicos.put("Tratamento para emagrecimento", 0);
+		contServicos.put("Redução de medidas", 0);
+		
+		contServicosM = new  HashMap<String, Integer>();
+		contServicosM.put("Manicure", 0);
+		contServicosM.put("Pedicure", 0);
+		contServicosM.put("Design de sobrancelhas", 0);
+		contServicosM.put("Corte", 0);
+		contServicosM.put("Pintura de cabelos", 0);
+		contServicosM.put("Remoção de rugas", 0);
+		contServicosM.put("Remoção de manchas na pele", 0);
+		contServicosM.put("Aplicação de botox", 0);
+		contServicosM.put("Tratamento para emagrecimento", 0);
+		contServicosM.put("Redução de medidas", 0);
+		
+		
+		contServicosF = new  HashMap<String, Integer>();
+		contServicosF.put("Manicure", 0);
+		contServicosF.put("Pedicure", 0);
+		contServicosF.put("Design de sobrancelhas", 0);
+		contServicosF.put("Corte", 0);
+		contServicosF.put("Pintura de cabelos", 0);
+		contServicosF.put("Remoção de rugas", 0);
+		contServicosF.put("Remoção de manchas na pele", 0);
+		contServicosF.put("Aplicação de botox", 0);
+		contServicosF.put("Tratamento para emagrecimento", 0);
+		contServicosF.put("Redução de medidas", 0);
+		
+	}
+	
+	public Map<String, Integer> getContServicos() {
+		return contServicos;
+	}
+
+	public void setContServicos(Map<String, Integer> contServicos) {
+		this.contServicos = contServicos;
 	}
 
 	public int opcao() {
@@ -30,6 +95,61 @@ public class Controle {
 	public String texto() {
 		String t = scanner.nextLine();
 		return t;
+	}
+	
+	public void contatosPorGenero(ArrayList<Contato> all) {
+		
+		ArrayList<Contato> ListaAux = new ArrayList<Contato>();
+		ListaAux = all;
+		Relatorio relatorio = new Relatorio();
+		int aux;
+		
+		for (Contato contato : ListaAux) {
+			if(contato.getGenero().contains("M") || contato.getGenero().contains("m")) {
+				System.out.println("m");
+				aux = getContServicosM().get(contato.getServico());
+				aux++;
+				getContServicosM().replace(contato.getServico(), aux);
+				setContServicosM(contServicosM);
+			}
+			else if(contato.getGenero().contains("F") || contato.getGenero().contains("f")){
+				System.out.println("f");
+				aux = getContServicosF().get(contato.getServico());
+				aux++;
+				getContServicosF().replace(contato.getServico(), aux);
+				setContServicosF(contServicosF);
+			}
+		}
+		
+		System.out.println();
+		System.out.println("Masculino: " + relatorio.getServicoMaisProcuradoGenero(getContServicosM()));
+		System.out.println("Feminino: " + relatorio.getServicoMaisProcuradoGenero(getContServicosF()) + "\n");
+		
+		
+		
+//		System.out.println(getContServicosM());
+//		System.out.println(getContServicosF());
+		
+//		Map<String, ArrayList> map = new HashMap();
+//		ArrayList<String> l1 = new ArrayList<String>();
+//		ArrayList<String> l2 = new ArrayList<String>();
+//		
+//		l1.add("1");
+//		l1.add("2");
+//		l1.add("3");
+//		l1.add("4");
+//		
+//		l2.add("1");
+//		l2.add("2");
+//		l2.add("3");
+//		l2.add("4");
+//
+//		map.put("masculino", l1);
+//		map.put("feminino", l2);
+//		
+//
+//		return map;
+		
 	}
 	
 	public Map getContatosMap() throws IOException {
@@ -96,33 +216,19 @@ public class Controle {
 				
 				if(texto.split(":")[0].contains("Servico")) {
 					c.setServico(texto.split(": ")[1]);
+					aux = getContServicos().get(texto.split(": ")[1]);
+					aux++;
+					getContServicos().replace(texto.split(": ")[1], aux);
+					setContServicos(contServicos);
 					
-					System.out.println(texto.split(": ")[1]);
-					System.out.println(c.contServicos.get(texto.split(": ")[1]));
-
-					
-//					perguntar pro prof
-					aux = c.getContServicos().get(texto.split(": ")[1]);
-					aux++;					
-					System.out.println(aux);
-					c.contServicos.replace(texto.split(": ")[1], aux);
-					c.setContServicos(c.contServicos);
-					
-					System.out.println(c.contServicos);
-					
-					
-					
-					
-//					System.out.println(texto.split(": ")[1] + "\n" + auxContServico);
-//					c.contServicos.replace(texto.split(": ")[1], auxContServico );
-//					System.out.println(c.contServicos);
 					contatos.add(c);
 					c = new Contato();
 				}
 				
 				texto = brd.readLine();
 			}
-			
+//			System.out.println("TERMINOU: \n" + getContServicos());
+
 			brd.close();
 			return contatos;
 	}

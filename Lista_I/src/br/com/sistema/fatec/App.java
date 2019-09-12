@@ -13,6 +13,7 @@ import br.com.modelo.fatec.Agenda;
 import br.com.modelo.fatec.Contato;
 import br.com.negocio.fatec.Controle;
 import br.com.negocio.fatec.Menu;
+import br.com.negocio.fatec.Relatorio;
 
 public class App {
 	public static void main(String[] args) throws Exception {
@@ -22,12 +23,12 @@ public class App {
 		ArrayList<Contato> contatos 		= new ArrayList<Contato>();
 		Controle ctrl 						= new Controle();
 		Contato ctt 						= new Contato();
-		Controle x;
-	
-		contatos = ctrl.init();
-
-		int opc = 0;
-//		int opc = 99;
+		Controle x;	
+		contatos = ctrl.init();			
+		
+		
+//		int opc = 0;
+		int opc = 99;
 		while(opc != 0) {
 			contatos = ctrl.init();
 			menu.menu();
@@ -59,6 +60,7 @@ public class App {
 					break;
 				case 5:
 					menu.relatorio();
+					Relatorio relatorio = new Relatorio();
 					x = new Controle();
 					switch (x.texto()) {
 						case "1":
@@ -68,10 +70,10 @@ public class App {
 							System.out.println("\n\n\t\tTODO\n\n");
 							break;
 						case "3":
-							System.out.println("\n\n\t\tTODO\n\n");
+							relatorio.getServicoMaisProcurado(ctrl.getContServicos());
 							break;
 						case "4":
-							System.out.println("\n\n\t\tTODO\n\n");
+							ctrl.contatosPorGenero(contatos);
 							break;
 					}
 					break;
@@ -150,6 +152,17 @@ public class App {
 
 
 
+//System.out.println(ctt.getContServicos());
+//System.out.println();
+//System.out.println(ctt.getContServicos().get("Pedicure"));
+//
+//
+//ctt.getContServicos().replace("Pedicure", 2);
+//System.out.println(ctt.getContServicos());
+//ctt.setContServicos(ctt.getContServicos());
+//System.out.println(ctt.getContServicos());
+
+//ctt.setContServicos(ctt.getContServicos());
 
 
 

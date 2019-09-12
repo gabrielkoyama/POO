@@ -1,5 +1,6 @@
 package br.com.modelo.fatec;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ public class Contato {
 	protected String genero;
 	protected String servico;
 	public Map <String, String> dictServicos;
-	public Map <String, Integer> contServicos;
+	
 	
 	public Contato() {
 		dictServicos = new HashMap<String, String>();
@@ -24,29 +25,8 @@ public class Contato {
 		dictServicos.put("8","Aplicação de botox");
 		dictServicos.put("9","Tratamento para emagrecimento");
 		dictServicos.put("10","Redução de medidas");
-		
-		contServicos = new HashMap<String, Integer>();
-		contServicos.put("Manicure", 0);
-		contServicos.put("Pedicure", 0);
-		contServicos.put("Design de sobrancelhas", 0);
-		contServicos.put("Corte", 0);
-		contServicos.put("Pintura de cabelos", 0);
-		contServicos.put("Remoção de rugas", 0);
-		contServicos.put("Remoção de manchas na pele", 0);
-		contServicos.put("Aplicação de botox", 0);
-		contServicos.put("Tratamento para emagrecimento", 0);
-		contServicos.put("Redução de medidas", 0);
-		
 	}
-
-	public Map<String, Integer> getContServicos() {
-		return contServicos;
-	}
-
-	public void setContServicos(Map<String, Integer> contServicos) {
-		this.contServicos = contServicos;
-	}
-
+	
 	public String getNome() {
 		return nome;
 	}
