@@ -11,6 +11,7 @@ public class Menu {
 		System.out.println("3 - Editar contato");
 		System.out.println("4 - Excluir contato");
 		System.out.println("5 - Relatorio");
+		System.out.println("6 - Cadastrar Servico");
 		System.out.println("0 - Sair");
 	}
 	

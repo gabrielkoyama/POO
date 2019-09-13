@@ -11,7 +11,9 @@ import java.util.Set;
 
 import br.com.modelo.fatec.Agenda;
 import br.com.modelo.fatec.Contato;
+import br.com.modelo.fatec.Servico;
 import br.com.negocio.fatec.Controle;
+import br.com.negocio.fatec.ControleServico;
 import br.com.negocio.fatec.Menu;
 import br.com.negocio.fatec.Relatorio;
 
@@ -22,8 +24,6 @@ public class App {
 		Agenda agenda 							= new Agenda();	
 		ArrayList<Contato> contatos 			= new ArrayList<Contato>();
 		ArrayList<Contato> contatosOrdenados 	= new ArrayList<Contato>();
-		ArrayList<Contato> contatosM 			= new ArrayList<Contato>();
-		ArrayList<Contato> contatosF			= new ArrayList<Contato>();
 		Controle ctrl 							= new Controle();
 		Contato ctt 							= new Contato();
 		Controle x;	
@@ -42,9 +42,13 @@ public class App {
 		ArrayList<String> listaAux = new ArrayList<String>(); 
 		for (Contato contato : contatos) listaAux.add(contato.getNome());
 		
+		
 		Collections.sort(listaAux);
+		
+		
 		for (String nome : listaAux) for (Contato z : contatos) if(z.getNome() == nome) contatosOrdenados.add(z);
-//			
+		
+		
 		
 //		int opc = 0;
 		int opc = 99;
@@ -103,8 +107,8 @@ public class App {
 							break;
 						case "2":
 							try {
-								System.out.println("Masculino: " + relatorio.idadeMedia(contatosM) + "\n");
-								System.out.println("Feminino: " + relatorio.idadeMedia(contatosF) + "\n");
+								System.out.println("Masculino: " + relatorio.idadeMedia(listaAuxM) + "\n");
+								System.out.println("Feminino: " + relatorio.idadeMedia(listaAuxF) + "\n");
 								
 							} catch (Exception e) {
 								System.out.println("Formato de data de nascimento errada");
@@ -117,6 +121,15 @@ public class App {
 							ctrl.contatosPorGenero(contatos);
 							break;
 					}
+					break;
+				case 6:
+					ControleServico cs = new ControleServico();
+					Servico s = new Servico();
+					
+					System.out.println();
+					s = cs.getServicoInput();
+					System.out.println(s.getNome() + "\n" + s.getPessoa().getNome());
+					
 					break;
 			}
 		}

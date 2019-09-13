@@ -38,7 +38,7 @@ public class Relatorio {
 		int total = 0;
 		for (Contato contato : contatos) {
 			total++;
-			soma += 2018 - Integer.parseInt(contato.getData_nasc().split("/")[2]);
+			soma += 2019 - Integer.parseInt(contato.getData_nasc().split("/")[2]);
 		}
 		num = soma/total;
 		return num;

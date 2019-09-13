@@ -9,7 +9,6 @@ public class Contato {
 	protected String telefone;
 	protected String data_nasc;
 	protected String genero;
-	protected String servico;
 	public Map <String, String> dictServicos;
 	
 	
@@ -35,8 +34,7 @@ public class Contato {
 		return (	"Nome: " + nome + "\n" + 
 					"Telefone: " + telefone + "\n" +  
 					"Data de Nascimento: " + data_nasc + "\n" +  
-					"Sexo: " + genero + "\n" +
-					"Servico: " + servico + "\n");
+					"Sexo: " + genero + "\n");
 	}
 
 
@@ -52,13 +50,6 @@ public class Contato {
 		return data_nasc;
 	}
 
-	public String getServico() {
-		return servico;
-	}
-
-	public void setServico(String servico) {
-		this.servico = servico;
-	}
 
 	public void setData_nasc(String data_nasc) {
 		this.data_nasc = data_nasc;

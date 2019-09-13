@@ -19,18 +19,14 @@ public class Agenda {
 		System.out.println("Digite um telefone para o contato:");
 		c.setTelefone(ctrl.texto());
 		
-		System.out.println("Digite sua data de nascimento:");
+		System.out.println("Digite sua data de nascimento:" + "\nExemplo: dd/mm/aaaa");
 		c.setData_nasc(ctrl.texto());
 		
 		System.out.println("Sexo: [M/F/O]:");
 		c.setGenero(ctrl.texto());
 		
 		System.out.println();
-		System.out.println("Agora escolha um dos nossos servicos: \n");
-		menu.servicos();
 
-		c.setServico(c.dictServicos.get(ctrl.texto()));
-		
 		return c;
 	}
 	

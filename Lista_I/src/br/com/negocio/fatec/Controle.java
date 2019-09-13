@@ -99,61 +99,14 @@ public class Controle {
 	
 	public void contatosPorGenero(ArrayList<Contato> all) {
 		
-		ArrayList<Contato> ListaAux = new ArrayList<Contato>();
-		ListaAux = all;
-		Relatorio relatorio = new Relatorio();
-		int aux;
+//		ArrayList<Contato> ListaAux = new ArrayList<Contato>();
+//		" + relatorio.getServicoMaisProcuradoGenero(getContServicosF()) + "\n");
 		
-		for (Contato contato : ListaAux) {
-			if(contato.getGenero().contains("M") || contato.getGenero().contains("m")) {
-				System.out.println("m");
-				aux = getContServicosM().get(contato.getServico());
-				aux++;
-				getContServicosM().replace(contato.getServico(), aux);
-				setContServicosM(contServicosM);
-			}
-			else if(contato.getGenero().contains("F") || contato.getGenero().contains("f")){
-				System.out.println("f");
-				aux = getContServicosF().get(contato.getServico());
-				aux++;
-				getContServicosF().replace(contato.getServico(), aux);
-				setContServicosF(contServicosF);
-			}
-		}
-		
-		System.out.println();
-		System.out.println("Masculino: " + relatorio.getServicoMaisProcuradoGenero(getContServicosM()));
-		System.out.println("Feminino: " + relatorio.getServicoMaisProcuradoGenero(getContServicosF()) + "\n");
-		
-		
-		
-//		System.out.println(getContServicosM());
-//		System.out.println(getContServicosF());
-		
-//		Map<String, ArrayList> map = new HashMap();
-//		ArrayList<String> l1 = new ArrayList<String>();
-//		ArrayList<String> l2 = new ArrayList<String>();
-//		
-//		l1.add("1");
-//		l1.add("2");
-//		l1.add("3");
-//		l1.add("4");
-//		
-//		l2.add("1");
-//		l2.add("2");
-//		l2.add("3");
-//		l2.add("4");
-//
-//		map.put("masculino", l1);
-//		map.put("feminino", l2);
-//		
-//
-//		return map;
 		
 	}
 	
 	public Map getContatosMap() throws IOException {
-		File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+		File arq 			= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
 		FileReader rd 		= new FileReader(arq);
 		BufferedReader brd 	= new BufferedReader(rd);
 		String texto 		= brd.readLine();
@@ -190,7 +143,7 @@ public class Controle {
 	public ArrayList init() throws IOException {
 		
 			ArrayList<Contato> contatos = new ArrayList<Contato>();
-			File arq 					= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+			File arq 					= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
 			FileReader rd 				= new FileReader(arq);
 			BufferedReader brd 			= new BufferedReader(rd);
 			String texto 				= brd.readLine();
@@ -212,48 +165,22 @@ public class Controle {
 				
 				if(texto.split(":")[0].contains("Sexo")) {
 					c.setGenero(texto.split(": ")[1]);
-				}
-				
-				if(texto.split(":")[0].contains("Servico")) {
-					c.setServico(texto.split(": ")[1]);
-					aux = getContServicos().get(texto.split(": ")[1]);
-					aux++;
-					getContServicos().replace(texto.split(": ")[1], aux);
-					setContServicos(contServicos);
-					
+
 					contatos.add(c);
 					c = new Contato();
 				}
 				
 				texto = brd.readLine();
 			}
-//			System.out.println("TERMINOU: \n" + getContServicos());
 
 			brd.close();
 			return contatos;
 	}
 	
-	public void listar() throws Exception {
-		File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
-		FileReader rd 		= new FileReader(arq);
-		BufferedReader brd 	= new BufferedReader(rd);
-		String texto 		= brd.readLine();
-		String aux;
-		
-		Map<String, Contato> contatos = new HashMap<String, Contato>();
-		Contato c = new Contato();
-		
-		while(texto != null) {
-			System.out.println(texto);
-			texto = brd.readLine();
-		}
-	
-		brd.close();
-	}
-	
+
 	public void salvar(Contato c) throws IOException {
 		
-		File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+		File arq 			= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
 		FileWriter wr 		= new FileWriter(arq, true);
 		BufferedWriter bwr 	= new BufferedWriter(wr);
 		
@@ -264,8 +191,6 @@ public class Controle {
 		bwr.write("Data de nascimento: " + c.getData_nasc());
 		bwr.newLine();
 		bwr.write("Sexo: " + c.getGenero());
-		bwr.newLine();
-		bwr.write("Servico: " + c.getServico());
 		bwr.newLine();
 		bwr.write("======================================");
 		bwr.newLine();
@@ -279,7 +204,7 @@ public class Controle {
 	
 	public void salvarLista(ArrayList<Contato> contatos) throws IOException {
 		
-		File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+		File arq 			= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
 		FileWriter wr 		= new FileWriter(arq);
 		BufferedWriter bwr 	= new BufferedWriter(wr);
 		
