@@ -36,7 +36,7 @@ public class Contato {
 					"Telefone: " + telefone + "\n" +  
 					"Data de Nascimento: " + data_nasc + "\n" +  
 					"Sexo: " + genero + "\n" +
-					"Servico: " + servico );
+					"Servico: " + servico + "\n");
 	}
 
 

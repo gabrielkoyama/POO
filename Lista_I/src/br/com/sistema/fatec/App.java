@@ -18,14 +18,33 @@ import br.com.negocio.fatec.Relatorio;
 public class App {
 	public static void main(String[] args) throws Exception {
 			
-		Menu menu 							= new Menu();
-		Agenda agenda 						= new Agenda();	
-		ArrayList<Contato> contatos 		= new ArrayList<Contato>();
-		Controle ctrl 						= new Controle();
-		Contato ctt 						= new Contato();
+		Menu menu 								= new Menu();
+		Agenda agenda 							= new Agenda();	
+		ArrayList<Contato> contatos 			= new ArrayList<Contato>();
+		ArrayList<Contato> contatosOrdenados 	= new ArrayList<Contato>();
+		ArrayList<Contato> contatosM 			= new ArrayList<Contato>();
+		ArrayList<Contato> contatosF			= new ArrayList<Contato>();
+		Controle ctrl 							= new Controle();
+		Contato ctt 							= new Contato();
 		Controle x;	
-		contatos = ctrl.init();			
+		contatos = ctrl.init();
 		
+//		Separando por genero
+		ArrayList<Contato> listaAuxM = new ArrayList<Contato>();
+		for (Contato contato : contatos) if(contato.getGenero().toUpperCase().contains("M")) listaAuxM.add(contato);
+		
+//		Separando por genero
+		ArrayList<Contato> listaAuxF = new ArrayList<Contato>();
+		for (Contato contato : contatos) if(contato.getGenero().toUpperCase().contains("F")) listaAuxF.add(contato);
+//		
+//		
+////		ORDENANDO -- DEPOIS TIRAR DAQUI - e melhorar a funcao 
+		ArrayList<String> listaAux = new ArrayList<String>(); 
+		for (Contato contato : contatos) listaAux.add(contato.getNome());
+		
+		Collections.sort(listaAux);
+		for (String nome : listaAux) for (Contato z : contatos) if(z.getNome() == nome) contatosOrdenados.add(z);
+//			
 		
 //		int opc = 0;
 		int opc = 99;
@@ -45,10 +64,22 @@ public class App {
 							agenda.listar(contatos);
 							break;
 						case "2":
-							System.out.println("\n\n\t\tTODO\n\n");
+							for (Contato c : contatosOrdenados) {
+								System.out.println(c.All() + "\n");
+							}
 							break;
 						case "3":
-							System.out.println("\n\n\t\tTODO\n\n");
+							System.out.println("Masculino:\n");
+							for (Contato contato : listaAuxM) {
+								System.out.println(contato.All());
+							}
+							System.out.println();
+							
+							System.out.println("Feminino:\n");
+							for (Contato contato : listaAuxF) {
+								System.out.println(contato.All());
+							}
+							System.out.println();
 							break;
 					}
 					break;
@@ -64,10 +95,20 @@ public class App {
 					x = new Controle();
 					switch (x.texto()) {
 						case "1":
-							System.out.println("\n\n\t\tTODO\n\n");
+							try {
+								System.out.println("\n" + relatorio.idadeMedia(contatos) + "\n");								
+							} catch (Exception e) {
+								System.out.println("Formato de data de nascimento errada");
+							}
 							break;
 						case "2":
-							System.out.println("\n\n\t\tTODO\n\n");
+							try {
+								System.out.println("Masculino: " + relatorio.idadeMedia(contatosM) + "\n");
+								System.out.println("Feminino: " + relatorio.idadeMedia(contatosF) + "\n");
+								
+							} catch (Exception e) {
+								System.out.println("Formato de data de nascimento errada");
+							}
 							break;
 						case "3":
 							relatorio.getServicoMaisProcurado(ctrl.getContServicos());
@@ -81,107 +122,3 @@ public class App {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-// TESTES 
-
-
-//ArrayList<Contato> teste = new ArrayList<Contato>();
-//Contato c = new Contato();
-//
-//Contato remove = new Contato();
-//
-//
-//Contato editOld = new Contato();
-//Contato editNew= new Contato();
-//
-//c.setNome("Gabriel");
-//c.setTelefone("23123123");
-//c.setData_nasc("adsad");
-//c.setGenero("a");
-//
-//teste.add(c);
-//
-//for (Contato contato : teste) {
-//	remove = contato;
-//}
-//
-////removendo
-////teste.remove(remove);
-//
-//for (Contato contato : teste) {
-//	System.out.println(contato.All());			
-//}
-//
-//System.out.println("\n\n");
-//
-//
-////editando
-//for (Contato contato : teste) {
-//	editNew.setNome("asds");
-//	editNew.setData_nasc("asasds");
-//	editNew.setTelefone("asdsad");
-//	editNew.setGenero("asd");
-//	teste.set(teste.indexOf(contato), editNew);
-//}
-//
-//for (Contato contato : teste) {
-//	System.out.println(contato.All());			
-//}
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//System.out.println(ctt.getContServicos());
-//System.out.println();
-//System.out.println(ctt.getContServicos().get("Pedicure"));
-//
-//
-//ctt.getContServicos().replace("Pedicure", 2);
-//System.out.println(ctt.getContServicos());
-//ctt.setContServicos(ctt.getContServicos());
-//System.out.println(ctt.getContServicos());
-
-//ctt.setContServicos(ctt.getContServicos());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
