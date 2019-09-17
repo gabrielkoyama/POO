@@ -20,6 +20,9 @@ import br.com.negocio.fatec.Relatorio;
 public class App {
 	public static void main(String[] args) throws Exception {
 			
+		ControleServico cs 						= new ControleServico();
+		ArrayList<Servico> servicos 			= new ArrayList<Servico>();
+		
 		Menu menu 								= new Menu();
 		Agenda agenda 							= new Agenda();	
 		ArrayList<Contato> contatos 			= new ArrayList<Contato>();
@@ -28,10 +31,12 @@ public class App {
 		Contato ctt 							= new Contato();
 		Controle x;	
 		contatos = ctrl.init();
+		servicos = cs.init();
 		
 //		Separando por genero
 		ArrayList<Contato> listaAuxM = new ArrayList<Contato>();
 		for (Contato contato : contatos) if(contato.getGenero().toUpperCase().contains("M")) listaAuxM.add(contato);
+		
 		
 //		Separando por genero
 		ArrayList<Contato> listaAuxF = new ArrayList<Contato>();
@@ -44,16 +49,17 @@ public class App {
 		
 		
 		Collections.sort(listaAux);
-		
-		
 		for (String nome : listaAux) for (Contato z : contatos) if(z.getNome() == nome) contatosOrdenados.add(z);
-		
-		
+
+//		for (Servico servico : servicos) {
+//			System.out.println(servico.list());
+//		}
 		
 //		int opc = 0;
 		int opc = 99;
 		while(opc != 0) {
 			contatos = ctrl.init();
+			servicos = cs.init();
 			menu.menu();
 			opc = ctrl.opcao();
 			switch(opc) {
@@ -123,14 +129,17 @@ public class App {
 					}
 					break;
 				case 6:
-					ControleServico cs = new ControleServico();
-					Servico s = new Servico();
-					
-					System.out.println();
-					s = cs.getServicoInput();
-					System.out.println(s.getNome() + "\n" + s.getPessoa().getNome());
-					
-					break;
+					menu.servicosSubMenu();
+					x = new Controle();
+					switch (x.texto()) {
+					case "1":
+						cs.listar(servicos);
+						break;
+					case "2":
+						cs.salvar(cs.getServicoInput(contatos));						
+						break;
+					}
+				break;
 			}
 		}
 	}

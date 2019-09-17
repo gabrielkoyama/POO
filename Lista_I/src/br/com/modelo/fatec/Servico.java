@@ -18,4 +18,12 @@ public class Servico {
 	public void setPessoa(Contato pessoa) {
 		this.pessoa = pessoa;
 	}
+	
+	public String list() {
+		return (	"Servico: " + nome + "\n" + 
+				"Nome: " + pessoa.getNome() + "\n" + 
+				"Telefone: " + pessoa.getTelefone() + "\n" +  
+				"Data de Nascimento: " + pessoa.getData_nasc() + "\n" +  
+				"Sexo: " + pessoa.getGenero() + "\n");
+	}
 }

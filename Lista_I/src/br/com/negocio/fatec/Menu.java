@@ -10,8 +10,8 @@ public class Menu {
 		System.out.println("2 - Listar contatos");
 		System.out.println("3 - Editar contato");
 		System.out.println("4 - Excluir contato");
-		System.out.println("5 - Relatorio");
-		System.out.println("6 - Cadastrar Servico");
+		System.out.println("5 - Relatorios");
+		System.out.println("6 - Servicos");
 		System.out.println("0 - Sair");
 	}
 	
@@ -39,5 +39,10 @@ public class Menu {
 		System.out.println("8 - Aplicação de botox");
 		System.out.println("9 - Tratamento para emagrecimento");
 		System.out.println("10 - Redução de medidas");
+	}
+	
+	public void servicosSubMenu() {
+		System.out.println("1 - Listar");
+		System.out.println("2 - Adicionar novo");
 	}
 }
