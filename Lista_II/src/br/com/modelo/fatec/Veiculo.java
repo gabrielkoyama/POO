@@ -6,6 +6,13 @@ public class Veiculo {
 	protected String ano_fabricacao;
 	protected String valor;
 	
+	public String All() {
+		return ("Modelo: " + modelo + "\n" + 
+				"Número da placa: " + numero_placa + "\n" +  
+				"Ano de Fabricação: " + ano_fabricacao + "\n" +  
+				"Valor: " + valor + "\n" );
+	}
+	
 	public String getNumero_placa() {
 		return numero_placa;
 	}

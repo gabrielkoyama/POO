@@ -3,7 +3,6 @@ package br.com.negocio.fatec;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import br.com.modelo.fatec.Agenda;
 import br.com.modelo.fatec.Pessoa;
 
 public class Controle {
@@ -33,7 +31,7 @@ public class Controle {
 	}
 	
 	public ArrayList init() throws IOException {
-			File arq 					= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+			File arq 					= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
 			FileReader rd 				= new FileReader(arq);
 			BufferedReader brd 			= new BufferedReader(rd);
 			Pessoa c 					= new Pessoa();
@@ -64,13 +62,10 @@ public class Controle {
 			brd.close();
 			return pessoas;
 	}
-	
-	
-	
-	
+
 	public void salvarLista(ArrayList<Pessoa> contatos) throws IOException {
 		
-		File arq 			= new File("C:\\Users\\User\\Desktop\\agenda.txt");
+		File arq 			= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
 		FileWriter wr 		= new FileWriter(arq);
 		BufferedWriter bwr 	= new BufferedWriter(wr);
 		
@@ -80,9 +75,9 @@ public class Controle {
 			bwr.newLine();
 			bwr.write("Telefone: " + c.getTelefone());
 			bwr.newLine();
-			bwr.write("Data de nascimento: " + c.getData_nasc());
+			bwr.write("Endereço: " + c.getEndereco());
 			bwr.newLine();
-			bwr.write("Sexo: " + c.getGenero());
+			bwr.write("CPF:" + c.getCpf());
 			bwr.newLine();
 			bwr.write("======================================");
 			bwr.newLine();			
@@ -94,6 +89,7 @@ public class Controle {
 	protected void finalize() throws Throwable {
 		scanner.close();
 	}
+
 }
 
 

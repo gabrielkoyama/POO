@@ -22,7 +22,6 @@ public class ControleServico {
 		String texto 				= brd.readLine();
 		Servico s 					= new Servico();
 		Contato c 					= new Contato();
-		int aux;
 		
 		while(texto != null) {
 			
@@ -92,12 +91,6 @@ public class ControleServico {
 		return servico;
 		
 	}
-	
-//	SVC
-//	SVC_NOME: TESTE1
-//	SVC_TELEFONE: 123123213
-//	SVC_DATA_NASC: 05/01/1998
-//	SVC_SEXO: M
 	
 	public void salvar(Servico servico) throws IOException {
 		

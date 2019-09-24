@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import br.com.modelo.fatec.Contato;
-import br.com.modelo.fatec.Servico;
 
 public class Relatorio {
 	

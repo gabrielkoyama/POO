@@ -5,7 +5,6 @@ public class Servico {
 	protected String nome;
 	protected Contato pessoa;
 	
-	
 	public String getNome() {
 		return nome;
 	}

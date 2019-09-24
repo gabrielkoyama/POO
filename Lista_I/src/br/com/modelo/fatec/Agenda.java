@@ -3,13 +3,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import br.com.negocio.fatec.Controle;
-import br.com.negocio.fatec.Menu;
 
 public class Agenda {
 	
 	public Contato getContato() throws Exception {
 		
-		Menu menu 		= new Menu();
 		Controle ctrl 	= new Controle();
 		Contato c 		= new Contato();
 		

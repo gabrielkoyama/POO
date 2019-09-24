@@ -3,21 +3,19 @@ package br.com.negocio.fatec;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import br.com.modelo.fatec.Agenda;
 import br.com.modelo.fatec.Contato;
 
 public class Controle {
 	public Scanner scanner;
-//	coloquei aqui porq eu dava new contato ele resetava a lista
 	public Map <String, Integer> contServicos;
 	public Map <String, Integer> contServicosM;
 	public Map <String, Integer> contServicosF;
@@ -97,14 +95,6 @@ public class Controle {
 		return t;
 	}
 	
-	public void contatosPorGenero(ArrayList<Contato> all) {
-		
-//		ArrayList<Contato> ListaAux = new ArrayList<Contato>();
-//		" + relatorio.getServicoMaisProcuradoGenero(getContServicosF()) + "\n");
-		
-		
-	}
-	
 	public Map getContatosMap() throws IOException {
 		File arq 			= new File("C:\\Users\\Aluno\\Desktop\\agenda.txt");
 		FileReader rd 		= new FileReader(arq);
@@ -148,7 +138,6 @@ public class Controle {
 			BufferedReader brd 			= new BufferedReader(rd);
 			String texto 				= brd.readLine();
 			Contato c 					= new Contato();
-			int aux;
 			
 			while(texto != null) {
 				if(texto.split(":")[0].contains("Nome")) {
@@ -228,4 +217,39 @@ public class Controle {
 	protected void finalize() throws Throwable {
 		scanner.close();
 	}
+	
+	
+//	ordenados
+	public ArrayList<Contato> ordena(ArrayList<Contato> contatos,  String x){
+		
+		ArrayList<Contato> res = new ArrayList<Contato>();
+		ArrayList<String> listaNomes = new ArrayList<String>();
+		
+		if(x.toUpperCase().contains("M")) {			
+			for (Contato contato : contatos) 
+				if(contato.getGenero().toUpperCase().contains("M")) 
+					listaNomes.add(contato.getNome());
+		}
+		else if(x.toUpperCase().contains("F")) {
+			for (Contato contato : contatos) 
+				if(contato.getGenero().toUpperCase().contains("F")) 
+					listaNomes.add(contato.getNome());
+		}else {
+			for (Contato contato : contatos) 
+				listaNomes.add(contato.getNome());
+		}
+		
+		Collections.sort(listaNomes);
+		
+		for (String nome : listaNomes) 
+			for (Contato z : contatos) 
+				if(z.getNome() == nome) 
+					res.add(z);
+
+		
+		return res; 
+	}
+	
+	
+	
 }
