@@ -1,15 +1,16 @@
 package br.com.modelo.fatec;
 
 public class Veiculo {
+
 	protected String numero_placa;
 	protected String modelo;
 	protected String ano_fabricacao;
 	protected String valor;
 	
-	public String All() {
-		return ("Modelo: " + modelo + "\n" + 
-				"Número da placa: " + numero_placa + "\n" +  
-				"Ano de Fabricação: " + ano_fabricacao + "\n" +  
+	public String toString() {
+		return (	"Placa: " + numero_placa + "\n" + 
+				"Modelo: " + modelo + "\n" +  
+				"Ano de Fabricacao: " + ano_fabricacao + "\n" +  
 				"Valor: " + valor + "\n" );
 	}
 	
